@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<managed-bean>
+		<managed-bean-name>loginBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.model.LoginBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>dataAccessBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.controller.DataAccessBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+
+		<managed-property>
+			<property-name>loginBean</property-name>
+			<property-class>edu.uic.ids517.f17g305.model.LoginBean</property-class>
+			<value>#{loginBean}</value>
+		</managed-property>
+
+		<managed-property>
+			<property-name>fileUploadBean</property-name>
+			<property-class>edu.uic.ids517.f17g305.model.FileUploadBean</property-class>
+			<value>#{fileUploadBean}</value>
+		</managed-property>
+
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>fileDownloadBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.controller.FileDownloadBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>statisticsBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.controller.StatisticsBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+
+		<managed-property>
+			<property-name>dataAccessBean</property-name>
+			<property-class>edu.uic.ids517.f17g305.controller.DataAccessBean</property-class>
+			<value>#{dataAccessBean}</value>
+		</managed-property>
+
+		<managed-property>
+			<property-name>descriptiveStatisticsBean</property-name>
+			<property-class>edu.uic.ids517.f17g305.model.DescriptiveStatisticsBean</property-class>
+			<value>#{descriptiveStatisticsBean}</value>
+		</managed-property>
+
+		<managed-property>
+			<property-name>regressionBean</property-name>
+			<property-class>edu.uic.ids517.f17g305.model.RegressionBean</property-class>
+			<value>#{regressionBean}</value>
+		</managed-property>
+
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>descriptiveStatisticsBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.model.DescriptiveStatisticsBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>regressionBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.model.RegressionBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>fileUploadBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.model.FileUploadBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>predictorResponseBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.f17g305.model.PredictorResponseBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<navigation-rule>
+		<from-view-id>/index.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/menu.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fail</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/menu.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/menu.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/menu.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fail</from-outcome>
+			<to-view-id>/menu.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/fileUpload.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/fileUpload.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fail</from-outcome>
+			<to-view-id>/fileUpload.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>
